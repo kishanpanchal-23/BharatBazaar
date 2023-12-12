@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { SetUserData } from '../Redux/authSlice';
 
-function Login() {
-
+function Login(props) {
+  const  { handleLogin } = props; 
   const redirect = useNavigate();
-  const dispatch = useDispatch();
-  // const [userData, setUserData] = useState([])
   const [formvalue, setformvalue] = useState({
     email:"",
     password:""
-  })
+  });
   
   const handleChange = (e) => {
     setformvalue({...formvalue,[e.target.name]:e.target.value});
@@ -21,10 +17,9 @@ function Login() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     const res = await axios.post(`http://localhost:8000/login`,formvalue);
-    const token = res.data.token 
-    localStorage.setItem("usertoken",token );
+    // console.log(res.data);
     setformvalue({...formvalue,email:"",password:""});
-    dispatch(SetUserData(res.data.user))
+    handleLogin();
     redirect('/');
   }
 
@@ -39,7 +34,7 @@ function Login() {
       <label htmlFor="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" value={formvalue.password} name="password" onChange={handleChange} required />
       {/* <hr /> */}
-      <Link to={'/signup'}>For Registrater</Link>
+      <Link to={'/signup'}>Create Account</Link>
       <div style={{marginTop:"10px"}}  className="clearfix">
         <button type="submit" onClick={handleSubmit} className="signupbtn">Login</button>
       </div>

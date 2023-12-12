@@ -30,8 +30,9 @@ function Editdata() {
     }
 
   return (
-    <form style={{border: '1px solid #ccc'}}>
-    <div className="container">
+    <div className="container adminEditForm">
+    <form style={{border:"1px solid gray",marginTop:"0px"}}>
+   
       <h1>Edit Page </h1>
       <p>Edit here for<strong> Admin's</strong></p>
       <hr />
@@ -44,8 +45,8 @@ function Editdata() {
       <div style={{marginTop:"10px"}}  className="clearfix">
         <button type="submit" onClick={handleEdit} className="signupbtn">Save</button>
       </div>
+      </form>
     </div>
-  </form>
   )
 }
 

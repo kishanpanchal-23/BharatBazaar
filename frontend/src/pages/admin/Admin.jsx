@@ -22,26 +22,24 @@ function Admin() {
   }
 
   return (
-    <div className='container admin' >
+    <div className='container admin px-5' >
         <table className="table">
           <thead>
             <tr>
             <th scope="col">Id</th>
             <th scope="col">Username</th>
-            <th scope="col">Password</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
            </tr>
         </thead>
   {
     data.map((item,index)=>(
-     <tbody>
+     <tbody className='px-5' >
           <tr key={index} >
           <th scope="row">{item.id}</th>
           <td>{item.username}</td>
-          <td>{item.password}</td>
-          <td><button className='btn btn-outline-primary' onClick={()=>{redirect('/editdata/'+item.id)}} >Edit</button></td>
-          <td><button className='btn btn-outline-danger' onClick={()=>{handleDelete(item.id)}} >Delete</button></td>
+          <td><button className='btn btn-outline-primary m-0' onClick={()=>{redirect('/editdata/'+item.id)}} >Edit</button></td>
+          <td><button className='btn btn-outline-danger m-0' onClick={()=>{handleDelete(item.id)}} >Delete</button></td>
           </tr>
         </tbody>
       ))

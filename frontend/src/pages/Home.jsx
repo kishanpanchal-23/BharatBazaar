@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { add } from "../Redux/cartSlice";
+import { addToCart,getTotals } from "../Redux/cartSlice";
 
 function Home(props) { 
 
@@ -14,6 +14,7 @@ function Home(props) {
   const fetchdata = async () => {
     const res = await axios.get(`http://localhost:8000/products`);
     setproducts(res.data);
+    dispatch(getTotals());
   };
 
   const productsFilter = products.filter((product)=> {
@@ -27,7 +28,7 @@ function Home(props) {
   }, []);
   
   const handleAdd = (product) => {
-    dispatch(add(product));
+    dispatch(addToCart(product));
   }
 
   return (

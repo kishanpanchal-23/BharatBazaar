@@ -17,6 +17,7 @@ function App() {
   
   const [selectedCategory,setSelectedCategory] = useState(null)
   const [searchproducts, setSearchproducts] = useState('');
+  const [islogged, setIslogged] = useState(false);
   
   const handleSearchChange = (e) => {
      setSearchproducts(e.target.value);
@@ -26,14 +27,20 @@ function App() {
       setSelectedCategory(category);
   }
 
+  const handleLogin = () => {
+    setIslogged(!islogged)
+  }
+  
+
   return (
     <div className="App">
       <BrowserRouter>
-      <Header handleSearchChange={handleSearchChange} handleCategoryChange={handleCategoryChange} />
+      <Header islogged={islogged} handleSearchChange={handleSearchChange} 
+       handleCategoryChange={handleCategoryChange} handleLogin={handleLogin} />
       <Routes>
         <Route path='/' element={ <Home searchproducts={searchproducts} selectedCategory={selectedCategory} /> }></Route>
         <Route path='/signup' index element={<Signup/>} ></Route> 
-        <Route path='/login' element={ <Login/> }></Route>
+        <Route path='/login' element={ <Login handleLogin={handleLogin} /> }></Route>
         <Route path="/superadmin" element={<Superadmin/>} ></Route>  
         <Route path='/admin' element={ <Admin/> } ></Route>
         <Route path='/editdata/:id' element={<Editdata/>}></Route>
