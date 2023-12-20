@@ -1,5 +1,5 @@
 const Mysql = require('../db');
-const path = require('path');
+// const path = require('path');
 
 const getProducts = async(req,res)=>{
     const q = 'SELECT * FROM products';
@@ -13,7 +13,7 @@ const getProducts = async(req,res)=>{
             }
         })
     })
-    return res;
+    return product;
 };
 
 const getProduct = async(req,res)=>{
@@ -48,7 +48,7 @@ const createProduct = async(req,res)=>{
             // Log the history
                 Mysql.query("INSERT INTO product_history (table_name, action, row_id, admins_id) VALUES (?, 'create', ?, ?)",
                 ["products", data.insertId ,req.admins_id]);
-                console.log(req.file);
+                // console.log(req.file);
                 return resolve(data);
             }
         })

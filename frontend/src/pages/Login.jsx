@@ -12,12 +12,13 @@ function Login(props) {
   
   const handleChange = (e) => {
     setformvalue({...formvalue,[e.target.name]:e.target.value});
-  }
+  };
   
   const handleSubmit = async(e) => {
     e.preventDefault();
     const res = await axios.post(`http://localhost:8000/login`,formvalue);
-    // console.log(res.data);
+    let userToken = res.data.token
+    localStorage.setItem("userToken",userToken);
     setformvalue({...formvalue,email:"",password:""});
     handleLogin();
     redirect('/');

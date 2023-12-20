@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Signup() {
 
+  const redirect = useNavigate();
   const [formvalue, setformvalue] = useState({
     username:"",
     email:"",
@@ -17,13 +18,11 @@ function Signup() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     const res = await axios.post(`http://localhost:8000/signup`,formvalue);
-    console.log(res);
     setformvalue({...formvalue,username:"",email:"",password:""})
+    redirect('/')
   }
 
- 
-  
-  return (
+ return (
   <div className="container-fulid signuppage">
     <form style={{border: '1px solid #ccc'}}>
     <h1>Sign Up</h1>

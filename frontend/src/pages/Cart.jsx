@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  removeFromCart,
+  // removeFromCart,
   decreaseCart,
   addToCart,
   clearCart,
@@ -17,9 +17,9 @@ function Cart() {
     dispatch(getTotals());
   }, [cart]);
 
-  const handleRemove = (id) => {
-    dispatch(removeFromCart(id));
-  };
+  // const handleRemove = (id) => {
+  //   dispatch(removeFromCart(id));
+  // };
 
   const handleDecreaseCart = (cartItem) => {
     dispatch(decreaseCart(cartItem));

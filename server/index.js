@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const Mysql =  require('./db')
 const signupRouter = require('./routes/authRoutes');
 const SuperAdminRouter = require('./routes/superAdmin');
 const productRouter = require('./routes/productRoutes');

@@ -6,6 +6,12 @@
   function Header(props) {
     const { handleSearchChange, handleCategoryChange, islogged, handleLogin} = props;
     const [navbtn, setNavBtn] = useState(false);
+    let token = localStorage.getItem("userToken")
+
+    const handleLogout = () => {
+      localStorage.removeItem("userToken");
+      handleLogin();
+    }
 
     return (
       <header className="header container-fluid">
@@ -38,12 +44,12 @@
             />
           </div>
           <div className="signup d-flex flex-row ">
-            {islogged ? (
+            {islogged && token ? (
               <>
                 <h6
                   style={{ cursor: "pointer" }}
                   className="pt-2"
-                  onClick={handleLogin}>
+                  onClick={()=>{handleLogout()}}>
                   Signout
                 </h6>
                 <Link className="cartlogo" to={"/cart"}>
