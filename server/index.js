@@ -4,8 +4,6 @@ const signupRouter = require('./routes/authRoutes');
 const SuperAdminRouter = require('./routes/superAdmin');
 const productRouter = require('./routes/productRoutes');
 const cors = require('cors');
-const dotenv = require('dotenv').config();
-
 
 
 app.use(cors());

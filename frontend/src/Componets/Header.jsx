@@ -11,7 +11,7 @@
     const handleLogout = () => {
       localStorage.removeItem("userToken");
       handleLogin();
-    }
+    };
 
     return (
       <header className="header container-fluid">

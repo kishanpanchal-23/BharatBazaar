@@ -573,3 +573,16 @@ header a:hover{
     width: 80%;
   } 
 }
+
+.errorpage{
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  text-align: center;
+  align-items: center;
+}
+.errorpage > button {
+  margin-left: 15%;
+}

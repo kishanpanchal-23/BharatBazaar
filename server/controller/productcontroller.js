@@ -48,7 +48,6 @@ const createProduct = async(req,res)=>{
             // Log the history
                 Mysql.query("INSERT INTO product_history (table_name, action, row_id, admins_id) VALUES (?, 'create', ?, ?)",
                 ["products", data.insertId ,req.admins_id]);
-                // console.log(req.file);
                 return resolve(data);
             }
         })

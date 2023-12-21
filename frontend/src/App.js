@@ -12,6 +12,7 @@ import Footer from './Componets/Footer';
 import { useState } from 'react';
 import Product from './pages/Product';
 import Cart from './pages/Cart';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   
@@ -38,6 +39,7 @@ function App() {
       <Header islogged={islogged} handleSearchChange={handleSearchChange} 
        handleCategoryChange={handleCategoryChange} handleLogin={handleLogin} />
       <Routes>
+        <Route path='*' element={<ErrorPage/>} ></Route>
         <Route path='/' element={ <Home searchproducts={searchproducts} selectedCategory={selectedCategory} /> }></Route>
         <Route path='/signup' index element={<Signup/>} ></Route> 
         <Route path='/login' element={ <Login handleLogin={handleLogin} /> }></Route>
